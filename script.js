@@ -1,122 +1,50 @@
-const body = document.querySelector('body').style,
-    sign_in_btn = document.forms["form-1"]["reg-btn"],
-    section = document.querySelector('section').style,
-    header = document.querySelector('header').style,
-    main = document.querySelector('main').style,
-    sec_page_btn = document.querySelector('.sec-page-btn'),
-    third_page_btn = document.querySelector('.third-page-btn'),
-    fourth_page_btn = document.querySelector('.fourth-page-btn'),
-    fifth_page_btn = document.querySelector('.fifth-page-btn'),
-    cont_1 = document.querySelector('.cont-1').style,
-    cont_2 = document.querySelector('.cont-2').style,
-    cont_3 = document.querySelector('.cont-3').style,
-    cont_4 = document.querySelector('.cont-4').style,
-    result_page = document.querySelector('.result-page').style,
-    page = document.querySelector('.page'),
-    _que = document.querySelector('.que').style,
-    correct_que = document.querySelector('.correct_que'),
-    wrong_que = document.querySelector('.wrong_que'),
-    att_que = document.querySelector('.att_que'),
-    status = document.querySelector('.status');
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ù…Ù†ØµØ© Ø§Ù„Ø§Ù…ØªØ­Ø§Ù†Ø§Øª Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ©</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header" class="header">
+        <h2>Ø¬Ø§Ù…Ø¹Ø© ØªÙƒØ±ÙŠØª</h2>
+        <h3>ÙƒÙ„ÙŠØ© Ø¹Ù„ÙˆÙ… Ø§Ù„Ø­Ø§Ø³ÙˆØ¨ ÙˆØ§Ù„Ø±ÙŠØ§Ø¶ÙŠØ§Øª</h3>
+        <h4>Ù‚Ø³Ù… Ø¹Ù„ÙˆÙ… Ø§Ù„Ø­Ø§Ø³ÙˆØ¨</h4>
+        <p>Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ø·Ø§Ù„Ø¨Ø©: Ù…Ù‡Ø§ Ù…Ù†Ø¹Ù…</p>
+        <p>Ø¥Ø´Ø±Ø§Ù Ø§Ù„Ø£Ø³ØªØ§Ø°: Ù…Ù‡Ù†Ø¯ Ø­Ø§ØªÙ… Ø±Ù…Ø¶Ø§Ù†</p>
+    </div>
 
-sign_in_btn.onclick = () => {
-    section.height = "200vh";
-    section.overflow = "hidden";
-    header.opacity = "0";
-    header.visibility = "hidden";
-    main.opacity = "1";
-    main.visibility = "visible";
-    body.transition = "all 0.5s";
-    body.overflow = "scroll";
-    const username = document.forms["form-1"]["username"].value,
-        userid = document.forms["form-1"]["userid"].value,
-        _username = document.querySelectorAll('.username'),
-        _userid = document.querySelectorAll('.userid');
-    Array.from(_username).forEach(name => {
-        name.innerHTML = username;
-    });
-    Array.from(_userid).forEach(id => {
-        id.innerHTML = userid;
-    });
-    page.innerHTML = "1/4";
-    alert("íÊÚíä Úáíß ãÍÇæáÉ ÇáÅÌÇÈÉ Úáì ÌãíÚ ÇáÃÓÆáÉ¡ æÅĞÇ áã ÊİÚá Ğáß¡ İÓíÊã ÇÚÊÈÇÑ ÇáÚáÇãÉ ÕİÑğÇ áåĞÇ ÇáÓÄÇá.")
-}
+    <div class="quiz-container">
+        <h1>Ù…Ù†ØµØ© Ø§Ù„Ø§Ù…ØªØ­Ø§Ù†Ø§Øª Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ©</h1>
 
-sec_page_btn.onclick = () => {
-    cont_1.opacity = "0";
-    cont_1.visibility = "hidden";
-    cont_1.zIndex = "-1";
-    cont_2.opacity = "1";
-    cont_2.visibility = "visible";
-    cont_2.zIndex = "1";
-    body.transition = "all 0.5s";
-    page.innerHTML = "2/4";
-}
+        <!-- Ø¥Ø¯Ø®Ø§Ù„ Ø§Ø³Ù… Ø§Ù„Ø·Ø§Ù„Ø¨ -->
+        <div id="student-name-container">
+            <label for="student-name">Ø§Ø³Ù… Ø§Ù„Ø·Ø§Ù„Ø¨ Ø§Ù„Ø±Ø¨Ø§Ø¹ÙŠ:</label>
+            <input type="text" id="student-name" placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù…Ùƒ Ø§Ù„Ø±Ø¨Ø§Ø¹ÙŠ Ù‡Ù†Ø§">
+            <button id="start-button">Ø¨Ø¯Ø¡ Ø§Ù„Ø§Ù…ØªØ­Ø§Ù†</button>
+        </div>
 
-third_page_btn.onclick = () => {
-    cont_2.opacity = "0";
-    cont_2.visibility = "hidden";
-    cont_2.zIndex = "-2";
-    cont_3.opacity = "1";
-    cont_3.visibility = "visible";
-    cont_3.zIndex = "2";
-    body.transition = "all 0.5s";
-    page.innerHTML = "3/4";
-}
+        <!-- Ø§Ø³Ù… Ø§Ù„Ø·Ø§Ù„Ø¨ ÙˆØ§Ù„ÙˆÙ‚Øª -->
+        <div id="exam-info" class="exam-info" style="display: none;">
+            <span id="student-name-display"></span>
+            <span id="timer">Ø§Ù„ÙˆÙ‚Øª Ø§Ù„Ù…ØªØ¨Ù‚ÙŠ: 60:00</span>
+        </div>
 
-fourth_page_btn.onclick = () => {
-    cont_3.opacity = "0";
-    cont_3.visibility = "hidden";
-    cont_3.zIndex = "-3";
-    cont_4.opacity = "1";
-    cont_4.visibility = "visible";
-    cont_4.zIndex = "3";
-    body.transition = "all 0.5s";
-    page.innerHTML = "4/4";
-}
+        <!-- Ù‚Ø³Ù… Ø§Ù„Ø£Ø³Ø¦Ù„Ø© -->
+        <div id="question-container" style="display: none;">
+            <div class="quiz-content">
+                <div class="question-section">
+                    <p id="question-text"></p>
+                    <div id="answer-buttons" class="btn-container"></div>
+                    <button id="next-button" class="next-btn">Ø§Ù„Ø³Ø¤Ø§Ù„ Ø§Ù„ØªØ§Ù„ÙŠ</button>
+                    <button id="finish-button" class="finish-btn">Ø¥Ù†Ù‡Ø§Ø¡ Ø§Ù„Ø§Ù…ØªØ­Ø§Ù†</button>
+                    <p id="score-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-fifth_page_btn.onclick = () => {
-    cont_4.opacity = "0";
-    cont_4.visibility = "hidden";
-    cont_4.zIndex = "-4";
-    result_page.opacity = "1";
-    result_page.visibility = "visible";
-    result_page.zIndex = "3";
-    section.height = "100vh";
-    section.backgroundColor = "#1AA15F";
-    section.overflow = "hidden";
-    main.opacity = "0";
-    main.visibility = "hidden";
-    main.zIndex = "-5";
-    body.transition = "all 0.5s";
-    body.overflow = "hidden";
-    if (correct_point >= 7) {
-        alert("áŞÏ ÇÌÊÒÊ ÇáÇÎÊÈÇÑ¡ ÇäŞÑ Úáì ÇáÒÑ ÇáÊÇáí ÃÏäÇå áÚÑÖ äÊíÌÊß")
-        status.innerHTML = "Pass";
-    }
-    else {
-        alert("áŞÏ İÔáÊ İí ÇáÇÎÊÈÇÑ¡ ÇäŞÑ Úáì ÇáÒÑ ÇáÊÇáí ÃÏäÇå áÚÑÖ äÊíÌÊß")
-        status.innerHTML = "Failed";
-    }
-}
-
-var correct_ans_arr = ["5", "4", "2", "7", "12", "50", "60", "24", "20", "10", "360", "110", "195", "0"]
-
-function wrong_selection() {
-    section.backgroundColor = "red";
-    alert('ÅÌÇÈÊß ÎÇØÆÉ¡ ÇäÊŞá Åáì ÇáÓÄÇá ÇáÊÇáí')
-}
-
-var correct_point = 0;
-
-function right_selection(value) {
-    for (i = 0; i <= correct_ans_arr.length - 1; i++) {
-        if (value == correct_ans_arr[i]) {
-            correct_point = correct_point + 1;
-            section.backgroundColor = "#1AA15F";
-            correct_que.innerHTML = correct_point;
-            wrong_que.innerHTML = 20 - correct_point;
-            att_que.innerHTML = correct_point + (20 - correct_point);
-        }
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
