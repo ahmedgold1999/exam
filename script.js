@@ -1,50 +1,86 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الامتحانات الإلكترونية</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="header" class="header">
-        <h2>جامعة تكريت</h2>
-        <h3>كلية علوم الحاسوب والرياضيات</h3>
-        <h4>قسم علوم الحاسوب</h4>
-        <p>إعداد الطالبة: مها منعم</p>
-        <p>إشراف الأستاذ: مهند حاتم رمضان</p>
-    </div>
+const questions = [
+    { question: "ما هو نوع البيانات الذي يستخدم لتخزين النصوص في JavaScript؟", answers: ["int", "string", "boolean", "float"], correct: 1 },
+    { question: "ما هو الامتداد الرئيسي لملفات HTML؟", answers: [".css", ".html", ".js", ".php"], correct: 1 },
+];
 
-    <div class="quiz-container">
-        <h1>منصة الامتحانات الإلكترونية</h1>
+for (let i = 0; i < 48; i++) {
+    questions.push({
+        question: `سؤال رقم ${i + 3}: ما هو مفهوم البرمجة ${i % 3 === 0 ? "كائنية التوجه" : "الإجرائية"}؟`,
+        answers: ["مفهوم حديث", "نهج برمجي", "أداة تطوير", "لغة برمجة"],
+        correct: 1
+    });
+}
 
-        <!-- إدخال اسم الطالب -->
-        <div id="student-name-container">
-            <label for="student-name">اسم الطالب الرباعي:</label>
-            <input type="text" id="student-name" placeholder="أدخل اسمك الرباعي هنا">
-            <button id="start-button">بدء الامتحان</button>
-        </div>
+let currentQuestionIndex = 0;
+let score = 0;
+let studentName = "";
+let timeRemaining = 3600;
+let timerInterval;
 
-        <!-- اسم الطالب والوقت -->
-        <div id="exam-info" class="exam-info" style="display: none;">
-            <span id="student-name-display"></span>
-            <span id="timer">الوقت المتبقي: 60:00</span>
-        </div>
+const questionText = document.getElementById("question-text");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-button");
+const finishButton = document.getElementById("finish-button");
+const startButton = document.getElementById("start-button");
+const studentNameInput = document.getElementById("student-name");
+const questionContainer = document.getElementById("question-container");
+const studentNameDisplay = document.getElementById("student-name-display");
+const timerDisplay = document.getElementById("timer");
+const examInfo = document.getElementById("exam-info");
+const header = document.getElementById("header");
+const studentNameContainer = document.getElementById("student-name-container");
 
-        <!-- قسم الأسئلة -->
-        <div id="question-container" style="display: none;">
-            <div class="quiz-content">
-                <div class="question-section">
-                    <p id="question-text"></p>
-                    <div id="answer-buttons" class="btn-container"></div>
-                    <button id="next-button" class="next-btn">السؤال التالي</button>
-                    <button id="finish-button" class="finish-btn">إنهاء الامتحان</button>
-                    <p id="score-text"></p>
-                </div>
-            </div>
-        </div>
-    </div>
+startButton.addEventListener("click", () => {
+    studentName = studentNameInput.value.trim();
+    if (studentName === "") {
+        alert("يرجى إدخال اسم الطالب الرباعي قبل بدء الامتحان.");
+        return;
+    }
+    studentNameDisplay.innerText = `الطالب: ${studentName}`;
+    header.style.display = "none";
+    studentNameContainer.style.display = "none";
+    examInfo.style.display = "flex";
+    questionContainer.style.display = "block";
+    startQuiz();
+    startTimer();
+});
 
-    <script src="script.js"></script>
-</body>
-</html>
+function startQuiz() {
+    showQuestion();
+}
+
+function showQuestion() {
+    resetState();
+    let currentQuestion = questions[currentQuestionIndex];
+    questionText.innerText = currentQuestion.question;
+    currentQuestion.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.innerText = answer;
+        button.classList.add("btn");
+        button.onclick = () => selectAnswer(index, button);
+        answerButtons.appendChild(button);
+    });
+}
+
+function selectAnswer(index, button) {
+    button.classList.add("selected");
+    nextButton.style.display = "block";
+}
+
+nextButton.addEventListener("click", () => {
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        showQuestion();
+    }
+});
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        if (timeRemaining <= 0) {
+            clearInterval(timerInterval);
+            alert("انتهى الوقت!");
+        }
+        timeRemaining--;
+        timerDisplay.innerText = `الوقت المتبقي: ${Math.floor(timeRemaining / 60)}:${String(timeRemaining % 60).padStart(2, '0')}`;
+    }, 1000);
+}
