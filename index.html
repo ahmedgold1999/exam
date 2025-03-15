@@ -13,21 +13,11 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>منصة الاختبارات الالكترونية</title>
-    <style>
-      .sub-heading {
-        color: #007bff;
-        font-size: 18px;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 10px;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
       <div class="start-screen">
         <h1 class="heading">منصة الاختبارات الالكترونية</h1>
-        <p class="sub-heading">جامعة تكريت - كلية علوم الحاسوب والرياضيات - قسم علوم الحاسوب<br>إعداد الطالبة <span style="color: #28a745;">مها منعم</span> - إشراف <span style="color: #dc3545;">أ.م مهند حاتم</span></p>
         <div class="settings">
           <label for="num-questions">عدد الأسئلة:</label>
           <select id="num-questions">
@@ -35,9 +25,9 @@
             <option value="10">10</option>
             <option value="15">15</option>
             <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
+            <option value="20">30</option>
+            <option value="20">40</option>
+            <option value="20">50</option>
           </select>
           <label for="category">اختر الفئة:</label>
           <select id="category">
@@ -79,7 +69,44 @@
         </div>
         <button class="btn start">بدء الامتحان</button>
       </div>
+      <div class="quiz hide">
+        <div class="timer">
+          <div class="progress">
+            <div class="progress-bar"></div>
+            <span class="progress-text"></span>
+          </div>
+        </div>
+        <div class="question-wrapper">
+          <div class="number">
+            Question <span class="current">1</span>
+            <span class="total">/10</span>
+          </div>
+          <div class="question">هذا سؤال هذا سؤال؟</div>
+        </div>
+        <div class="answer-wrapper">
+          <div class="answer selected">
+            <span class="text">answer</span>
+            <span class="checkbox">
+              <i class="fas fa-check"></i>
+            </span>
+          </div>
+        </div>
+        <button class="btn submit" disabled>ارسال</button>
+        <button class="btn next">التالي</button>
+      </div>
+      <div class="end-screen hide">
+        <h1 class="heading">منصة الاختبارات الالكترونية</h1>
+        <div class="score">
+          <span class="score-text">درجتك:</span>
+          <div>
+            <span class="final-score">0</span>
+            <span class="total-score">/10</span>
+          </div>
+        </div>
+        <button class="btn restart">اعادة بدء الامتحان</button>
+      </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
