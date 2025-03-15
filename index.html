@@ -12,14 +12,14 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Quiz App</title>
+    <title>منصة الاختبارات الالكترونية</title>
   </head>
   <body>
     <div class="container">
       <div class="start-screen">
-        <h1 class="heading">Quiz App</h1>
+        <h1 class="heading">منصة الاختبارات الالكترونية</h1>
         <div class="settings">
-          <label for="num-questions">Number of Questions:</label>
+          <label for="num-questions">عدد الأسئلة:</label>
           <select id="num-questions">
             <option value="5">5</option>
             <option value="10">10</option>
@@ -29,7 +29,7 @@
             <option value="20">40</option>
             <option value="20">50</option>
           </select>
-          <label for="category">Select Category:</label>
+          <label for="category">اختر الفئة:</label>
           <select id="category">
             <option value="">any category</option>
             <option value="9">general knowledge</option>
@@ -50,14 +50,14 @@
             <option value="25">art</option>
             <option value="28">vehicles</option>
           </select>
-          <label for="difficulty">Select difficulty:</label>
+          <label for="difficulty">اختر الصعوبة:</label>
           <select id="difficulty">
             <option value="">any difficulty</option>
             <option value="easy">easy</option>
             <option value="medium">medium</option>
             <option value="hard">hard</option>
           </select>
-          <label for="time">Select time per question:</label>
+          <label for="time">حدد الوقت لكل سؤال:</label>
           <select id="time">
             <option value="10">10 seconds</option>
             <option value="15">15 seconds</option>
@@ -67,7 +67,7 @@
             <option value="60">60 seconds</option>
           </select>
         </div>
-        <button class="btn start">Start Quiz</button>
+        <button class="btn start">بدء الامتحان</button>
       </div>
       <div class="quiz hide">
         <div class="timer">
@@ -81,7 +81,7 @@
             Question <span class="current">1</span>
             <span class="total">/10</span>
           </div>
-          <div class="question">This is a question This is a question?</div>
+          <div class="question">هذا سؤال هذا سؤال؟</div>
         </div>
         <div class="answer-wrapper">
           <div class="answer selected">
@@ -91,19 +91,19 @@
             </span>
           </div>
         </div>
-        <button class="btn submit" disabled>Submit</button>
-        <button class="btn next">Next</button>
+        <button class="btn submit" disabled>ارسال</button>
+        <button class="btn next">التالي</button>
       </div>
       <div class="end-screen hide">
-        <h1 class="heading">Quiz App</h1>
+        <h1 class="heading">منصة الاختبارات الالكترونية</h1>
         <div class="score">
-          <span class="score-text">Your score:</span>
+          <span class="score-text">درجتك:</span>
           <div>
             <span class="final-score">0</span>
             <span class="total-score">/10</span>
           </div>
         </div>
-        <button class="btn restart">Restart Quiz</button>
+        <button class="btn restart">اعادة بدء الامتحان</button>
       </div>
     </div>
 
